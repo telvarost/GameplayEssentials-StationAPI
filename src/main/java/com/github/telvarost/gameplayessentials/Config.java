@@ -33,7 +33,7 @@ public class Config {
         @ConfigName("Disable Eating At Max Health")
         @MultiplayerSynced
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
-        public Boolean DISABLE_EATING_AT_MAX_HEALTH = true;
+        public Boolean DISABLE_EATING_AT_MAX_HEALTH = false;
 
         @ConfigName("Fix Caught Fish Going Above Player Head")
         @MultiplayerSynced

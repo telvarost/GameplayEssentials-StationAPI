@@ -11,6 +11,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 ## Gameplay Features
 
 * Change bed behavior: vanilla, disable nightmares, set spawn-point only, or disable entirely
+* Allow disabling eating when at max health (default: false)
 * Fix fish flying above player head (default: false)
 * Fix bucket being consumes when lava bucket is used in furnace
 * Fix minecarts stopping on items/arrows
