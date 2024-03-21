@@ -19,6 +19,9 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 * Allow pressure plates to be placed on fences
 * Allow sugar cane to be placed on sand
 * Allow trapdoors to be placed without support
+* Change jack-o'-lantern recipe to be shapeless
+* Change stairs recipe output (output: 1-16, default: 4)
+* Add ability to equip/swap pieces of armor with `right-click`
 
 ## Installation using Prism Launcher
 

@@ -54,5 +54,23 @@ public class Config {
         @MultiplayerSynced
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
         public Boolean FIX_SLIME_DROPS = true;
+
+        @ConfigName("Shapeless Jack o’ Lantern Recipe")
+        @Comment("Restart required for changes to take effect")
+        @MultiplayerSynced
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        public static Boolean SHAPELESS_JACKOLANTERN_RECIPE = true;
+
+        @ConfigName("Stairs Crafting Recipe Output: 1-16")
+        @Comment("Restart required for changes to take effect")
+        @MaxLength(16)
+        @MultiplayerSynced
+        @ValueOnVanillaServer(integerValue = 4)
+        public static Integer STAIRS_OUTPUT = 4;
+
+        @ConfigName("Use Right Click To Equip Armor")
+        @MultiplayerSynced
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        public static Boolean RIGHT_CLICK_ARMOR_EQUIP = true;
     }
 }

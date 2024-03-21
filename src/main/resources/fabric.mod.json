@@ -21,6 +21,7 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
+      "com.github.telvarost.gameplayessentials.events.init.RecipeListener"
     ],
     "stationapi:event_bus_client": [
     ],
@@ -31,6 +32,9 @@
     ],
     "gcapi:factory_provider": [
       "com.github.telvarost.gameplayessentials.BedBehaviorEnumFactory"
+    ],
+    "gcapi:presave": [
+      "com.github.telvarost.gameplayessentials.events.ConfigListener"
     ]
   },
   "mixins": [
