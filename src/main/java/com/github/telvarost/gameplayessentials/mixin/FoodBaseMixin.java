@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+/** - All credit for the code in this class goes to Dany and his mod UniTweaks
+ *  See: https://github.com/DanyGames2014/UniTweaks
+ */
 @Mixin(FoodBase.class)
 public class FoodBaseMixin {
     @Inject(method = "use", at = @At(value = "HEAD"), cancellable = true)
