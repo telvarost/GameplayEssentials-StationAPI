@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.github.telvarost.gameplayessentials.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "BedMixin",
+    "EntityBaseMixin",
+    "FishHookMixin",
+    "FurnaceEntityMixin",
+    "LevelMonsterSpawnerMixin",
+    "MinecartMixin",
+    "PlayerBaseAccessor",
+    "PressurePlateMixin",
+    "SlimeMixin",
+    "StoneSlabItemMixin",
+    "SugarCaneMixin",
+    "TrapdoorMixin"
+  ],
+  "server": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

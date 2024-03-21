@@ -1,0 +1,32 @@
+package com.github.telvarost.gameplayessentials.mixin;
+
+import com.github.telvarost.gameplayessentials.Config;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyArgs;
+import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+
+import net.minecraft.entity.FishHook;
+import net.minecraft.entity.Item;
+
+@Mixin(FishHook.class)
+public class FishHookMixin {
+
+	@ModifyArgs(method = "method_956", at = @At(value = "INVOKE", target = "Lnet/minecraft/level/Level;spawnEntity(Lnet/minecraft/entity/EntityBase;)Z"))
+	private void gameplayEssentials_onFishCaught(Args args) {
+		if(Config.config.FIX_FISHING) {
+			Item item = args.get(0);
+			FishHook hook = (FishHook) (Object) this;
+
+			if (item != null)
+			{
+				double x = hook.field_1067.x - hook.x;
+				double y = hook.field_1067.y - hook.y;
+				double z = hook.field_1067.z - hook.z;
+				item.velocityX = x * 0.1D;
+				item.velocityY = y * 0.1D + Math.sqrt(Math.sqrt(x * x + y * y + z * z)) * 0.05D;
+				item.velocityZ = z * 0.1D;
+			}
+		}
+	}
+}
