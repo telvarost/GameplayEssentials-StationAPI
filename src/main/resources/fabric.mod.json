@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "GameplayEssentials",
-  "description": "Fixes gameplay bugs and adds a few gameplay features. Special thanks to Dany for helping with many of the changes and fixes.",
+  "description": "Fixes gameplay bugs and adds some gameplay features. Special thanks to Dany for helping with many of the changes and fixes.",
   "authors": [
     "Telvarost",
     "Dany"
