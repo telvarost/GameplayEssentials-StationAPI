@@ -8,6 +8,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 * Fix bucket being consumed when lava bucket is used in furnace
 * Fix slimes not dropping slimeballs when an attack brings them below zero health
 * Fix minecarts stopping on items/arrows
+* Fix mob jittering in multiplayer
 * Fix fish flying above player head (default: false)
     * Default false because during multiplayer testing it was found that vanilla behavior is more correct
 
