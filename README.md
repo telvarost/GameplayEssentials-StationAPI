@@ -5,7 +5,6 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 
 ## Gameplay Bugfixes
 
-* Fix crash slabs crashing the game
 * Fix slimes not dropping slimeballs when an attack brings them below zero health
 
 ## Gameplay Features

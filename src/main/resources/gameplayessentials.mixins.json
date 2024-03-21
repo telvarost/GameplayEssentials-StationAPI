@@ -13,7 +13,6 @@
     "PlayerBaseAccessor",
     "PressurePlateMixin",
     "SlimeMixin",
-    "StoneSlabItemMixin",
     "SugarCaneMixin",
     "TrapdoorMixin"
   ],
