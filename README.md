@@ -15,6 +15,7 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 ## Gameplay Features
 
 * Change bed behavior: vanilla, disable nightmares, set spawn-point only, or disable entirely
+* Allow disabling block interactions with a keybind (thereby allowing things like placing torches on crafting tables)
 * Allow disabling eating when at max health (default: false)
 * Allow pressure plates to be placed on fences
 * Allow sugar cane to be placed on sand

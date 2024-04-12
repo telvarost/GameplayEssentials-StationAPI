@@ -30,6 +30,12 @@ public class Config {
         @ValueOnVanillaServer(integerValue = 0)
         public BedBehaviorEnum BED_BEHAVIOR_ENUM = BedBehaviorEnum.VANILLA;
 
+        @ConfigName("Disable Block Interactions With Keybind")
+        @Comment("Multiplayer will always use sneak keybinding")
+        @MultiplayerSynced
+        @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)
+        public Boolean DISABLE_BLOCK_INTERACTIONS_WITH_KEYBIND = true;
+
         @ConfigName("Disable Eating At Max Health")
         @MultiplayerSynced
         @ValueOnVanillaServer(booleanValue = TriBoolean.FALSE)

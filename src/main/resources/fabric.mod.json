@@ -24,6 +24,7 @@
       "com.github.telvarost.gameplayessentials.events.init.RecipeListener"
     ],
     "stationapi:event_bus_client": [
+      "com.github.telvarost.gameplayessentials.events.init.KeyBindingListener"
     ],
     "stationapi:event_bus_server": [
     ],

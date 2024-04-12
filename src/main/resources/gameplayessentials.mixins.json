@@ -18,8 +18,10 @@
     "TrapdoorMixin"
   ],
   "server": [
+    "server.class_70Mixin"
   ],
   "client": [
+    "client.BaseClientInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
