@@ -1,35 +1,35 @@
 package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.Config;
-import net.minecraft.entity.player.PlayerBase;
-import net.minecraft.item.ItemBase;
-import net.minecraft.item.ItemInstance;
-import net.minecraft.item.armour.Armour;
-import net.minecraft.level.Level;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(Armour.class)
-public abstract class ArmourMixin extends ItemBase {
+@Mixin(ArmorItem.class)
+public abstract class ArmourMixin extends Item {
 
     @Shadow
     @Final
-    public int armourSlot;
+    public int equipmentSlot;
 
     public ArmourMixin(int i, int j, int k, int l) {
         super(i);
     }
 
     @Override
-    public ItemInstance use(ItemInstance arg, Level arg2, PlayerBase arg3) {
+    public ItemStack use(ItemStack arg, World arg2, PlayerEntity arg3) {
         if (Config.config.RIGHT_CLICK_ARMOR_EQUIP) {
-            if (arg3.inventory.armour[Math.abs(this.armourSlot - 3)] == null) {
-                arg3.inventory.armour[Math.abs(this.armourSlot - 3)] = arg.copy();
+            if (arg3.inventory.armor[Math.abs(this.equipmentSlot - 3)] == null) {
+                arg3.inventory.armor[Math.abs(this.equipmentSlot - 3)] = arg.copy();
                 arg.count = 0;
             } else {
-                ItemInstance temp = arg3.inventory.armour[Math.abs(this.armourSlot - 3)];
-                arg3.inventory.armour[Math.abs(this.armourSlot - 3)] = arg.copy();
+                ItemStack temp = arg3.inventory.armor[Math.abs(this.equipmentSlot - 3)];
+                arg3.inventory.armor[Math.abs(this.equipmentSlot - 3)] = arg.copy();
                 return temp;
             }
         }

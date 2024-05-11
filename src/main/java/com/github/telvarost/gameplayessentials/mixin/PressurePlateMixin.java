@@ -1,25 +1,25 @@
 package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.Config;
-import net.minecraft.block.BlockBase;
-import net.minecraft.block.PressurePlate;
-import net.minecraft.block.PressurePlateTrigger;
-import net.minecraft.block.material.Material;
-import net.minecraft.level.Level;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.PressurePlateActivationRule;
+import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(PressurePlate.class)
-class PressurePlateMixin extends BlockBase {
+@Mixin(PressurePlateBlock.class)
+class PressurePlateMixin extends Block {
     @Shadow
-    private PressurePlateTrigger field_1743;
+    private PressurePlateActivationRule field_1743;
 
-    public PressurePlateMixin(int i, int j, PressurePlateTrigger arg, Material arg2) {
+    public PressurePlateMixin(int i, int j, PressurePlateActivationRule arg, Material arg2) {
         super(i, j, arg2);
         this.field_1743 = arg;
-        this.setTicksRandomly(true);
+        this.setTickRandomly(true);
         float var5 = 0.0625F;
         this.setBoundingBox(var5, 0.0F, var5, 1.0F - var5, 0.03125F, 1.0F - var5);
     }
@@ -28,42 +28,42 @@ class PressurePlateMixin extends BlockBase {
             method = "canPlaceAt",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/level/Level;canSuffocate(III)Z"
+                    target = "Lnet/minecraft/world/World;method_1780(III)Z"
             )
     )
-    public boolean annoyanceFix_canPlaceAt(Level arg, int i, int j, int k) {
+    public boolean annoyanceFix_canPlaceAt(World arg, int i, int j, int k) {
         if (Config.config.ALLOW_PRESSURE_PLATES_ON_FENCES) {
-            return arg.canSuffocate(i, j, k) || (BlockBase.FENCE.id == arg.getTileId(i, j, k));
+            return arg.method_1780(i, j, k) || (Block.FENCE.id == arg.getBlockId(i, j, k));
         }
         else
         {
-            return arg.canSuffocate(i, j, k);
+            return arg.method_1780(i, j, k);
         }
     }
 
     @Redirect(
-            method = "onAdjacentBlockUpdate",
+            method = "neighborUpdate",
             at = @At(
                 value = "INVOKE",
-                target = "Lnet/minecraft/level/Level;canSuffocate(III)Z"
+                target = "Lnet/minecraft/world/World;method_1780(III)Z"
             )
     )
-    public boolean annoyanceFix_onAdjacentBlockUpdate(Level instance, int i, int j, int k) {
+    public boolean annoyanceFix_onAdjacentBlockUpdate(World instance, int i, int j, int k) {
         if (Config.config.ALLOW_PRESSURE_PLATES_ON_FENCES) {
-            int blockBelowPressurePlateId = instance.getTileId(i, j, k);
+            int blockBelowPressurePlateId = instance.getBlockId(i, j, k);
 
-            if (BlockBase.FENCE.id == blockBelowPressurePlateId)
+            if (Block.FENCE.id == blockBelowPressurePlateId)
             {
-                return instance.canSuffocate(i, j, k) || (BlockBase.FENCE.id == instance.getTileId(i, j, k));
+                return instance.method_1780(i, j, k) || (Block.FENCE.id == instance.getBlockId(i, j, k));
             }
             else
             {
-                return instance.canSuffocate(i, j, k);
+                return instance.method_1780(i, j, k);
             }
         }
         else
         {
-            return instance.canSuffocate(i, j, k);
+            return instance.method_1780(i, j, k);
         }
     }
 }
