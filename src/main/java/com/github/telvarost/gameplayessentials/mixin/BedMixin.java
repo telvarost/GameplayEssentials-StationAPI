@@ -28,16 +28,16 @@ public class BedMixin {
     /** - All credit for the code in this class goes to Dany and his mod UniTweaks
      *  See: https://github.com/DanyGames2014/UniTweaks
      */
-    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;method_495(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
+    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
     public SleepAttemptResult gameplayEssentials_canUseSetSpawnPoint(PlayerEntity player, int x, int y, int z) {
         if (BedBehaviorEnum.SET_SPAWN_POINT_ONLY == Config.config.BED_BEHAVIOR_ENUM) {
             if (!player.world.isRemote) {
                 TranslationStorage translationStorage = TranslationStorage.getInstance();
-                player.method_490(translationStorage.get("tile.gameplayessentials.bed.spawnPointSet"));
+                player.sendMessage(translationStorage.get("tile.gameplayessentials.bed.spawnPointSet"));
                 ((PlayerBaseAccessor) player).setRespawnPos(new Vec3i(MathHelper.floor(x), MathHelper.floor(y), MathHelper.floor(z)));
                 return SleepAttemptResult.OK;
             }
         }
-        return player.method_495(x, y, z);
+        return player.trySleep(x, y, z);
     }
 }

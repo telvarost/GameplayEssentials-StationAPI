@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MinecartEntity.class)
 public class MinecartMixin {
 
-	@Inject(method = "method_1379", at = @At("HEAD"), cancellable = true)
+	@Inject(method = "getCollisionAgainstShape", at = @At("HEAD"), cancellable = true)
 	public void gameplayEssentials_onCollision(Entity other, CallbackInfoReturnable<Box> ci) {
 		if (Config.config.FIX_MINECART_STOPPING_ON_ITEMS) {
 			if (other instanceof ItemEntity || other instanceof ArrowEntity) {

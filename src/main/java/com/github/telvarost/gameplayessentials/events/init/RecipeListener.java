@@ -2,7 +2,7 @@ package com.github.telvarost.gameplayessentials.events.init;
 
 import com.github.telvarost.gameplayessentials.Config;
 import net.mine_diver.unsafeevents.listener.EventListener;
-import net.minecraft.ShapedRecipe;
+import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.CraftingRecipe;

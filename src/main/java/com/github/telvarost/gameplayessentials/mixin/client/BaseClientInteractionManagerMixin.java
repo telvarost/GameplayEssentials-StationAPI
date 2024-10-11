@@ -25,7 +25,7 @@ public class BaseClientInteractionManagerMixin {
     @Final
     protected Minecraft minecraft;
 
-    @Redirect(method = "method_1713", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
+    @Redirect(method = "interactBlock", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;getBlockId(III)I"))
     public int shiftPlacing(World level, int x, int y, int z) {
         if (  Config.config.DISABLE_BLOCK_INTERACTIONS_WITH_KEYBIND
            && (Keyboard.isKeyDown(KeyBindingListener.disableBlockInteractions.code))

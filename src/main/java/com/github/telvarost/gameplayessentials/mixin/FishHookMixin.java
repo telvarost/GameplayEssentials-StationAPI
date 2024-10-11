@@ -13,10 +13,10 @@ import org.spongepowered.asm.mixin.injection.At;
 public class FishHookMixin {
 
 	@WrapOperation(
-			method = "method_956",
+			method = "use",
 			at = @At(
 					value = "INVOKE",
-					target = "Lnet/minecraft/world/World;method_210(Lnet/minecraft/entity/Entity;)Z"
+					target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"
 			)
 	)
 	private boolean gameplayEssentials_onFishCaught(World instance, Entity entity, Operation<Boolean> original) {
@@ -25,9 +25,9 @@ public class FishHookMixin {
 
 			if (entity != null)
 			{
-				double x = hook.field_1067.x - hook.x;
-				double y = hook.field_1067.y - hook.y;
-				double z = hook.field_1067.z - hook.z;
+				double x = hook.owner.x - hook.x;
+				double y = hook.owner.y - hook.y;
+				double z = hook.owner.z - hook.z;
 				entity.velocityX = x * 0.1D;
 				entity.velocityY = y * 0.1D + Math.sqrt(Math.sqrt(x * x + y * y + z * z)) * 0.05D;
 				entity.velocityZ = z * 0.1D;

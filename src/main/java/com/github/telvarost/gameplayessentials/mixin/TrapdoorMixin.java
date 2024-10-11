@@ -2,7 +2,7 @@ package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.Config;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,21 +22,21 @@ public class TrapdoorMixin extends Block {
             method = "neighborUpdate",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/world/World;method_1780(III)Z"
+                    target = "Lnet/minecraft/world/World;shouldSuffocate(III)Z"
             )
     )
     public boolean gameplayEssentials_onAdjacentBlockUpdate(World instance, int i, int j, int k) {
         if (Config.config.ALLOW_TRAPDOORS_WITHOUT_SUPPORTS) {
             return true;
         } else {
-            return instance.method_1780(i, j, k);
+            return instance.shouldSuffocate(i, j, k);
         }
     }
 
     @Inject(method = "canPlaceAt", at = @At("HEAD"), cancellable = true)
     public void gameplayEssentials_canPlaceAt(World arg, int i, int j, int k, int l, CallbackInfoReturnable<Boolean> cir) {
         if (Config.config.ALLOW_TRAPDOORS_WITHOUT_SUPPORTS) {
-            cir.setReturnValue(!arg.method_1779(i, j, k).method_905());
+            cir.setReturnValue(!arg.getMaterial(i, j, k).isSolid());
         }
     }
 }
