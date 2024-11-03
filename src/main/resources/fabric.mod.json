@@ -33,9 +33,6 @@
     ],
     "gcapi3:factory_provider": [
       "com.github.telvarost.gameplayessentials.BedBehaviorEnumFactory"
-    ],
-    "gcapi3:presave": [
-      "com.github.telvarost.gameplayessentials.events.ConfigListener"
     ]
   },
   "mixins": [
