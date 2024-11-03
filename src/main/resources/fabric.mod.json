@@ -28,13 +28,13 @@
     ],
     "stationapi:event_bus_server": [
     ],
-    "gcapi": [
+    "gcapi3": [
       "com.github.telvarost.gameplayessentials.Config"
     ],
-    "gcapi:factory_provider": [
+    "gcapi3:factory_provider": [
       "com.github.telvarost.gameplayessentials.BedBehaviorEnumFactory"
     ],
-    "gcapi:presave": [
+    "gcapi3:presave": [
       "com.github.telvarost.gameplayessentials.events.ConfigListener"
     ]
   },
@@ -44,6 +44,12 @@
 
   "depends": {
     "minecraft": "1.0.0-beta.7.3"
+  },
+
+  "recommends": {
+    "stationapi": "*",
+    "gcapi3": ">=3.0.2",
+    "modmenu": "*"
   },
 
   "breaks": {
