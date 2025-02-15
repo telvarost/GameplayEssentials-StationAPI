@@ -25,6 +25,17 @@ public class RecipeListener {
             for (int i = 0; i < recipes.size(); i++) {
                 CraftingRecipe recipe = recipes.get(i);
 
+                if (recipe.getOutput().itemId == Block.TRAPDOOR.asItem().id) {
+                    ItemStack[] inputArray = new ItemStack[9];
+                    inputArray[0] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    inputArray[1] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    inputArray[2] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    inputArray[3] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    inputArray[4] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    inputArray[5] = new ItemStack(Block.PLANKS.asItem(), 1);
+                    recipes.set(i, new ShapedRecipe(3, 2, inputArray, new ItemStack(Block.TRAPDOOR.asItem(), Config.config.TRAPDOOR_OUTPUT)));
+                }
+
                 if (recipe.getOutput().itemId == Block.WOODEN_STAIRS.asItem().id) {
                     ItemStack[] inputArray = new ItemStack[9];
                     inputArray[0] = new ItemStack(Block.PLANKS.asItem(), 1);

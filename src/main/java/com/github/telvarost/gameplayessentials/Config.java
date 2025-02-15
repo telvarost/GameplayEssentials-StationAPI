@@ -86,6 +86,14 @@ public class Config {
         public Integer STAIRS_OUTPUT = 4;
 
         @ConfigEntry(
+                name = "Trapdoor Crafting Recipe Output: 1-8",
+                description = "Restart required for changes to take effect",
+                multiplayerSynced = true,
+                maxLength = 8
+        )
+        public Integer TRAPDOOR_OUTPUT = 2;
+
+        @ConfigEntry(
                 name = "Use Right Click To Equip Armor",
                 multiplayerSynced = true
         )
