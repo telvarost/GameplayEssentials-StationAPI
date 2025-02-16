@@ -4,7 +4,7 @@
   "package": "com.github.telvarost.gameplayessentials.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ArmourMixin",
+    "ArmorMixin",
     "BedMixin",
     "EntityBaseMixin",
     "FishHookMixin",

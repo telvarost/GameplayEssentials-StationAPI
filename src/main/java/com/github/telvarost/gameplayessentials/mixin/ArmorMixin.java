@@ -11,13 +11,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(ArmorItem.class)
-public abstract class ArmourMixin extends Item {
+public abstract class ArmorMixin extends Item {
 
     @Shadow
     @Final
     public int equipmentSlot;
 
-    public ArmourMixin(int i, int j, int k, int l) {
+    public ArmorMixin(int i, int j, int k, int l) {
         super(i);
     }
 
