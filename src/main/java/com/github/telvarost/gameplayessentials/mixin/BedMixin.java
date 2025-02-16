@@ -2,6 +2,8 @@ package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.BedBehaviorEnum;
 import com.github.telvarost.gameplayessentials.Config;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.BedBlock;
 import net.minecraft.client.resource.language.TranslationStorage;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,7 +14,6 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(BedBlock.class)
@@ -28,8 +29,14 @@ public class BedMixin {
     /** - All credit for the code in this class goes to Dany and his mod UniTweaks
      *  See: https://github.com/DanyGames2014/UniTweaks
      */
-    @Redirect(method = "onUse", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"))
-    public SleepAttemptResult gameplayEssentials_canUseSetSpawnPoint(PlayerEntity player, int x, int y, int z) {
+    @WrapOperation(
+            method = "onUse",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/player/PlayerEntity;trySleep(III)Lnet/minecraft/entity/player/SleepAttemptResult;"
+            )
+    )
+    public SleepAttemptResult gameplayEssentials_canUseSetSpawnPoint(PlayerEntity player, int x, int y, int z, Operation<SleepAttemptResult> original) {
         if (BedBehaviorEnum.SET_SPAWN_POINT_ONLY == Config.config.BED_BEHAVIOR_ENUM) {
             if (!player.world.isRemote) {
                 TranslationStorage translationStorage = TranslationStorage.getInstance();
@@ -38,6 +45,6 @@ public class BedMixin {
                 return SleepAttemptResult.OK;
             }
         }
-        return player.trySleep(x, y, z);
+        return original.call(player, x, y, z);
     }
 }

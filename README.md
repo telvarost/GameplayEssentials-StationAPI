@@ -1,7 +1,7 @@
-# GameplayEssentials StationAPI Edition for Minecraft Beta 1.7.3
+# GameplayEssentials for Minecraft Beta 1.7.3 (Babric)
 
-A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a few gameplay features.
-* Mod now works on Multiplayer with [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) version 2.0+ used to sync configs!
+A babric mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a few gameplay features.
+* Mod works on Multiplayer with [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) version 3.0+ used to sync configs!
 
 ## Gameplay Bugfixes
 
@@ -22,18 +22,21 @@ A StationAPI mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a fe
 * Allow trapdoors to be placed without support
 * Change jack-o'-lantern recipe to be shapeless
 * Change stairs recipe output (output: 1-16, default: 4)
+  * Requires StationAPI to be installed
 * Change trapdoor recipe output (output: 1-8, default: 2)
+  * Requires StationAPI to be installed
 * Add ability to equip/swap pieces of armor with `right-click`
 
 ## Installation using Prism Launcher
 
 1. Download an instance of Babric for Prism Launcher: https://github.com/babric/prism-instance
-2. Install Java 17, set the instance to use it, and disable compatibility checks on the instance: https://adoptium.net/temurin/releases/
-3. Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
-4. (Optional) Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
-5. (Optional) Add GlassConfigAPI 3.0+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
-6. Add this mod to the mod folder for the instance: https://github.com/telvarost/GameplayEssentials-StationAPI/releases
-7. Run and enjoy! 👍
+2. Install Java 17 and set the instance to use it: https://adoptium.net/temurin/releases/
+3. Add GlassConfigAPI 3.0.2+ to the mod folder for the instance: https://modrinth.com/mod/glass-config-api
+4. Add Glass Networking to the mod folder for the instance: https://modrinth.com/mod/glass-networking
+5. (Optional) Add StationAPI to the mod folder for the instance: https://modrinth.com/mod/stationapi
+6. (Optional) Add Mod Menu to the mod folder for the instance: https://modrinth.com/mod/modmenu-beta
+7. Add this mod to the mod folder for the instance: https://github.com/telvarost/GameplayEssentials-StationAPI/releases
+8. Run and enjoy! 👍
 
 ## Feedback
 

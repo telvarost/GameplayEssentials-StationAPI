@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.github.telvarost.gameplayessentials.mixin",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "com.github.telvarost.gameplayessentials.GameplayEssentialsMixinPlugin",
   "mixins": [
     "ArmorMixin",
     "BedMixin",
@@ -21,7 +22,8 @@
     "server.ServerPlayerInteractionManagerMixin"
   ],
   "client": [
-    "client.BaseClientInteractionManagerMixin"
+    "client.BaseClientInteractionManagerMixin",
+    "client.GameOptionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
