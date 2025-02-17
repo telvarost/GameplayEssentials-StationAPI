@@ -45,7 +45,7 @@ public class GameplayEssentialsMixinPlugin implements IMixinConfigPlugin {
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         if (mixinClassName.equals("com.github.telvarost.gameplayessentials.mixin.client.GameOptionsMixin")) {
-            return (false == FabricLoader.getInstance().isModLoaded("stationapi"));
+            return !FabricLoader.getInstance().isModLoaded("stationapi");
         } else {
             return true;
         }
