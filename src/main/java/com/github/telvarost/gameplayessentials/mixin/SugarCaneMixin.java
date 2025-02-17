@@ -1,13 +1,14 @@
 package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.Config;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.SugarCaneBlock;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(SugarCaneBlock.class)
 class SugarCaneMixin extends Block {
@@ -20,17 +21,17 @@ class SugarCaneMixin extends Block {
         this.setTickRandomly(true);
     }
 
-    @Redirect(
+    @WrapOperation(
             method = "canPlaceAt",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/World;getBlockId(III)I"
             )
     )
-    public int gameplayEssentials_canPlaceAt(World arg, int i, int j, int k) {
+    public int gameplayEssentials_canPlaceAt(World instance, int x, int y, int z, Operation<Integer> original) {
         if (Config.config.ALLOW_SUGAR_CANE_ON_SAND)
         {
-            int tileToPlaceAt = arg.getBlockId(i, j, k);
+            int tileToPlaceAt = original.call(instance, x, y, z);
 
             /** - Treat sand like dirt so that sugarcane can be place-able */
             if (Block.SAND.id == tileToPlaceAt)
@@ -42,7 +43,7 @@ class SugarCaneMixin extends Block {
         }
         else
         {
-            return arg.getBlockId(i, j, k);
+            return original.call(instance, x, y, z);
         }
     }
 }

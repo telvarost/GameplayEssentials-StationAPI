@@ -1,6 +1,8 @@
 package com.github.telvarost.gameplayessentials.mixin;
 
 import com.github.telvarost.gameplayessentials.Config;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.TrapdoorBlock;
@@ -18,18 +20,18 @@ public class TrapdoorMixin extends Block {
         super(i, arg);
     }
 
-    @Redirect(
+    @WrapOperation(
             method = "neighborUpdate",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/world/World;shouldSuffocate(III)Z"
             )
     )
-    public boolean gameplayEssentials_onAdjacentBlockUpdate(World instance, int i, int j, int k) {
+    public boolean gameplayEssentials_onAdjacentBlockUpdate(World instance, int x, int y, int z, Operation<Boolean> original) {
         if (Config.config.ALLOW_TRAPDOORS_WITHOUT_SUPPORTS) {
             return true;
         } else {
-            return instance.shouldSuffocate(i, j, k);
+            return original.call(instance, x, y, z);
         }
     }
 

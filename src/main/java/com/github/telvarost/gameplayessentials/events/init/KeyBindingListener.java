@@ -9,10 +9,10 @@ import org.lwjgl.input.Keyboard;
  *  See: https://github.com/DanyGames2014/UniTweaks
  */
 public class KeyBindingListener {
-    public static KeyBinding disableBlockInteractions;
+    public static KeyBinding disableBlockInteractions = new KeyBinding("No Interactions", Keyboard.KEY_LSHIFT);
 
     @EventListener
     public void registerKeyBindings(KeyBindingRegisterEvent event) {
-        event.keyBindings.add(disableBlockInteractions = new KeyBinding("No Interactions", Keyboard.KEY_LSHIFT));
+        event.keyBindings.add(disableBlockInteractions);
     }
 }
