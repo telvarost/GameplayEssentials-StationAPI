@@ -1,7 +1,8 @@
-# GameplayEssentials for Minecraft Beta 1.7.3 (Babric)
+# GameplayEssentials for Minecraft Beta 1.7.3
 
 A babric mod for Minecraft Beta 1.7.3 that fixes gameplay bugs and adds a few gameplay features.
 * Mod works on Multiplayer with [GlassConfigAPI](https://modrinth.com/mod/glass-config-api) version 3.0+ used to sync configs!
+* [StationAPI](https://modrinth.com/mod/stationapi) is optional and used for recipe configs
 
 ## Gameplay Bugfixes
 
